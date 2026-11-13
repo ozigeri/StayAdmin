@@ -22,4 +22,4 @@ export interface BookingSummary {
   cancelled: number;
 }
 
-export type BookingStatusFilter = 'All' | EBookingStatus;
+export type BookingStatusFilter = 'All' | 'Pending' | 'Confirmed' | 'Cancelled';
