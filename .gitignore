@@ -1,0 +1,16 @@
+# Runtime data
+api/data/
+api/data.json.tmp
+api/node_modules/
+
+# Frontend builds and node_modules
+frontend/dist/
+frontend/node_modules/
+frontend/.angular/
+
+# System and logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
