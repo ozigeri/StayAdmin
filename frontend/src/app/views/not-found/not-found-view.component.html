@@ -1,0 +1,17 @@
+<div class="min-h-[70vh] flex flex-col items-center justify-center text-center p-6 animate-scale-in">
+  <div class="w-20 h-20 rounded-3xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 mb-6 shadow-sm">
+    <span class="text-3xl font-extrabold font-mono">404</span>
+  </div>
+
+  <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Az oldal nem található</h2>
+  <p class="text-sm text-slate-500 max-w-sm mt-2 leading-relaxed">
+    A keresett oldal nem létezik, vagy áthelyezésre került. Kérjük térjen vissza a vezérlőpultra.
+  </p>
+
+  <div class="mt-6">
+    <app-button variant="primary" (clicked)="goHome()">
+      <app-icon name="home" size="sm"></app-icon>
+      <span>Vissza az áttekintéshez</span>
+    </app-button>
+  </div>
+</div>
