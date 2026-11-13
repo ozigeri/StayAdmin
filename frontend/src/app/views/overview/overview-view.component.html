@@ -1,0 +1,131 @@
+<div class="space-y-6 animate-fade-in">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200/60">
+    <div>
+      <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Áttekintés</h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Válasszon ki egy szálláshelyet a részletes statisztikák megtekintéséhez</p>
+    </div>
+
+    <div class="w-full sm:w-72">
+      <app-select
+        placeholder="Válasszon szálláshelyet..."
+        [options]="propertyOptions()"
+        [ngModel]="selectedPropertyId()"
+        (ngModelChange)="handlePropertyChange($event)"
+      ></app-select>
+    </div>
+  </div>
+
+  @if (selectedPropertyId() && overviewData()) {
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <app-stat-card
+        title="Mai foglalások"
+        [value]="overviewData()!.today.booked"
+        accent="indigo"
+      >
+        <app-icon stat-icon name="calendar" size="md"></app-icon>
+      </app-stat-card>
+
+      <app-stat-card
+        title="Mai érkezések"
+        [value]="overviewData()!.today.checkIns"
+        accent="emerald"
+      >
+        <app-icon stat-icon name="bed" size="md"></app-icon>
+      </app-stat-card>
+
+      <app-stat-card
+        title="Mai távozások"
+        [value]="overviewData()!.today.checkOuts"
+        accent="amber"
+      >
+        <app-icon stat-icon name="clock" size="md"></app-icon>
+      </app-stat-card>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2">
+        <app-card title="Legutóbbi foglalások" subtitle="Legfeljebb 4 legutóbb létrehozott foglalás" padding="none">
+          @if (overviewData()!.recentBookings.length === 0) {
+            <div class="p-6">
+              <app-empty-state
+                title="Nincsenek legutóbbi foglalások"
+                message="Ehhez a szálláshelyhez még nem érkezett foglalás."
+                icon="calendar"
+              ></app-empty-state>
+            </div>
+          } @else {
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm">
+                <thead class="bg-slate-50 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100">
+                  <tr>
+                    <th class="px-5 py-3">Azonosító</th>
+                    <th class="px-5 py-3">Vendég</th>
+                    <th class="px-5 py-3">Szálláshely</th>
+                    <th class="px-5 py-3">Érkezés</th>
+                    <th class="px-5 py-3">Távozás</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 font-medium">
+                  @for (booking of overviewData()!.recentBookings; track booking.id) {
+                    <tr class="hover:bg-slate-50/80 transition-colors">
+                      <td class="px-5 py-3.5 text-xs font-semibold text-slate-500 font-mono">
+                        #{{ booking.id.substring(0, 8) }}
+                      </td>
+                      <td class="px-5 py-3.5 text-slate-900 font-semibold">{{ booking.guestName }}</td>
+                      <td class="px-5 py-3.5 text-slate-600">{{ booking.propertyName }}</td>
+                      <td class="px-5 py-3.5 text-slate-600 whitespace-nowrap">{{ booking.start }}</td>
+                      <td class="px-5 py-3.5 text-slate-600 whitespace-nowrap">{{ booking.end }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          }
+        </app-card>
+      </div>
+
+      <div class="lg:col-span-1">
+        <app-card title="Közelgő érkezések" subtitle="A következő 2 napban várható vendégek" padding="none">
+          @if (overviewData()!.upcomingCheckIns.length === 0) {
+            <div class="p-6">
+              <app-empty-state
+                title="Nincs közelgő érkezés"
+                message="A következő 2 napban nem érkezik vendég erre a szállásra."
+                icon="bed"
+              ></app-empty-state>
+            </div>
+          } @else {
+            <div class="divide-y divide-slate-100">
+              @for (item of overviewData()!.upcomingCheckIns; track item.guestName + item.date) {
+                <div class="p-4 flex items-center gap-3.5 hover:bg-slate-50 transition-colors">
+                  <div class="w-12 h-12 rounded-xl bg-slate-100 overflow-hidden shrink-0 border border-slate-200/80">
+                    @if (item.imageUrl) {
+                      <img [src]="item.imageUrl" [alt]="item.propertyName" class="w-full h-full object-cover" />
+                    } @else {
+                      <div class="w-full h-full flex items-center justify-center text-slate-400">
+                        <app-icon name="image" size="sm"></app-icon>
+                      </div>
+                    }
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-semibold text-slate-900 truncate">{{ item.guestName }}</h4>
+                    <p class="text-xs text-slate-500 truncate">{{ item.propertyName }}</p>
+                    <span class="inline-block mt-1 text-[11px] font-semibold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">
+                      {{ item.date }}
+                    </span>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </app-card>
+      </div>
+    </div>
+  } @else {
+    <app-empty-state
+      title="Nincs kiválasztva szálláshely"
+      message="Válasszon ki egy szálláshelyet a fenti legördülő menüből az áttekintő adatok megtekintéséhez."
+      icon="building"
+    ></app-empty-state>
+  }
+</div>
