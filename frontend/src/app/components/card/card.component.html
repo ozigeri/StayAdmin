@@ -1,0 +1,23 @@
+<div [class]="cardClasses()">
+  @if (title() || subtitle()) {
+    <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between gap-4">
+      <div>
+        @if (title()) {
+          <h3 class="text-base font-semibold text-slate-800">{{ title() }}</h3>
+        }
+        @if (subtitle()) {
+          <p class="text-xs text-slate-500 mt-0.5">{{ subtitle() }}</p>
+        }
+      </div>
+      <div>
+        <ng-content select="[card-header-actions]"></ng-content>
+      </div>
+    </div>
+  }
+
+  <div [class]="paddingClasses()">
+    <ng-content></ng-content>
+  </div>
+
+  <ng-content select="[card-footer]"></ng-content>
+</div>
