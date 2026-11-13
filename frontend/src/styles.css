@@ -10,7 +10,6 @@
   }
 }
 
-/* Custom smooth animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -82,7 +81,6 @@
   animation: pulseSubtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Clean, modern scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
