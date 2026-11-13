@@ -1,0 +1,33 @@
+<div class="min-h-screen flex flex-col bg-slate-50/70">
+  <app-header
+    [username]="username()"
+    (logout)="handleLogout()"
+    (toggleSidebar)="toggleSidebar()"
+  ></app-header>
+
+  <div class="flex-1 flex max-w-7xl w-full mx-auto">
+    <app-sidebar
+      [isOpen]="sidebarOpen()"
+      (close)="closeSidebar()"
+    ></app-sidebar>
+
+    <main class="flex-1 min-w-0 p-4 sm:p-6 lg:p-8">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-sm pointer-events-none">
+    @for (toast of toasts(); track toast.id) {
+      <div class="pointer-events-auto">
+        <app-toast
+          [id]="toast.id"
+          [type]="toast.type"
+          [title]="toast.title ?? null"
+          [message]="toast.message"
+          [duration]="toast.duration ?? 4000"
+          (closed)="removeToast($event)"
+        ></app-toast>
+      </div>
+    }
+  </div>
+</div>
