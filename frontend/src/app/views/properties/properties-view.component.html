@@ -1,0 +1,126 @@
+<div class="space-y-6 animate-fade-in">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200/60">
+    <div>
+      <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Szálláshelyek</h2>
+      <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Kezelje a regisztrált szálláshelyeket és azok szobáit</p>
+    </div>
+
+    <div>
+      <app-button variant="primary" (clicked)="navigateToCreate()">
+        <app-icon name="plus" size="sm"></app-icon>
+        <span>Új szálláshely</span>
+      </app-button>
+    </div>
+  </div>
+
+  <app-card padding="sm">
+    <div class="flex flex-col sm:flex-row items-center gap-3">
+      <div class="flex-1 w-full">
+        <app-input
+          placeholder="Keresés név alapján..."
+          [ngModel]="searchQuery()"
+          (ngModelChange)="handleSearch($event)"
+        ></app-input>
+      </div>
+
+      <div class="w-full sm:w-60">
+        <app-select
+          [options]="categoryOptions"
+          placeholder=""
+          [ngModel]="selectedCategory()"
+          (ngModelChange)="handleCategoryChange($event)"
+        ></app-select>
+      </div>
+    </div>
+  </app-card>
+
+  <app-card padding="none">
+    @if (properties().length === 0) {
+      <div class="p-8">
+        <app-empty-state
+          title="Nincs megjeleníthető szálláshely"
+          message="Nem található szálláshely a megadott szűrési feltételekkel."
+          icon="building"
+          actionText="Új szálláshely hozzáadása"
+          (actionClick)="navigateToCreate()"
+        ></app-empty-state>
+      </div>
+    } @else {
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-50 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100">
+            <tr>
+              <th class="px-5 py-3 w-16">Kép</th>
+              <th class="px-5 py-3">Név</th>
+              <th class="px-5 py-3">Város</th>
+              <th class="px-5 py-3">Kategória</th>
+              <th class="px-5 py-3 text-right">Műveletek</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 font-medium">
+            @for (property of properties(); track property.id) {
+              <tr class="hover:bg-slate-50/80 transition-colors">
+                <td class="px-5 py-3.5">
+                  <div class="w-12 h-10 rounded-lg bg-slate-100 overflow-hidden shrink-0 border border-slate-200">
+                    @if (property.imageUrl) {
+                      <img [src]="property.imageUrl" [alt]="property.name" class="w-full h-full object-cover" />
+                    } @else {
+                      <div class="w-full h-full flex items-center justify-center text-slate-400">
+                        <app-icon name="image" size="xs"></app-icon>
+                      </div>
+                    }
+                  </div>
+                </td>
+                <td class="px-5 py-3.5 text-slate-900 font-semibold">{{ property.name }}</td>
+                <td class="px-5 py-3.5 text-slate-600">
+                  <span class="inline-flex items-center gap-1.5 text-xs text-slate-500">
+                    <app-icon name="map-pin" size="xs" customClass="text-slate-400"></app-icon>
+                    <span>{{ property.location }}</span>
+                  </span>
+                </td>
+                <td class="px-5 py-3.5">
+                  <app-badge
+                    [variant]="getCategoryBadgeVariant(property.category)"
+                    [text]="getCategoryLabel(property.category)"
+                  ></app-badge>
+                </td>
+                <td class="px-5 py-3.5 text-right">
+                  <div class="inline-flex items-center gap-1.5 justify-end">
+                    <app-button
+                      variant="outline"
+                      size="sm"
+                      (clicked)="navigateToEdit(property.id)"
+                    >
+                      <app-icon name="edit" size="sm"></app-icon>
+                      <span>Szerkesztés</span>
+                    </app-button>
+                    <app-button
+                      variant="danger"
+                      size="sm"
+                      (clicked)="promptDelete(property)"
+                    >
+                      <app-icon name="trash" size="sm"></app-icon>
+                      <span>Törlés</span>
+                    </app-button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </app-card>
+</div>
+
+<app-modal
+  [isOpen]="isDeleteModalOpen()"
+  title="Szálláshely törlése"
+  [message]="'Biztosan törölni szeretné a(z) ' + (propertyToDelete()?.name ?? '') + ' szálláshelyet? Figyelem: a szálláshelyhez tartozó összes foglalás is véglegesen törlődik!'"
+  confirmText="Igen, törlöm"
+  cancelText="Mégse"
+  variant="danger"
+  [loading]="deleteLoading()"
+  (cancelled)="cancelDelete()"
+  (confirmed)="confirmDelete()"
+></app-modal>
