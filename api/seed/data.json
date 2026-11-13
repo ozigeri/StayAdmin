@@ -1,0 +1,720 @@
+{
+  "users": [
+    {
+      "username": "Admin",
+      "password": "1234"
+    }
+  ],
+  "properties": [
+    {
+      "id": "property-01",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-1/800/600",
+      "name": "Lebegő Lángos Grand Hotel",
+      "location": "Eger",
+      "category": "Hotel",
+      "description": "A reggelit héliumos lángos szállítja az ablakhoz. A fokhagyma külön légtérben érkezik.",
+      "address": "Felhő utca 42.",
+      "roomPrices": {
+        "Standard": 10777,
+        "Superior": 15888,
+        "Family": 22999
+      }
+    },
+    {
+      "id": "property-02",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-2/800/600",
+      "name": "Három Álmos Uborka Panzió",
+      "location": "Szeged",
+      "category": "Pension",
+      "description": "A recepciós egy nyugdíjas befőttesüveg. Csendes pihenő alatt tilos roppanni.",
+      "address": "Kovász köz 3.",
+      "roomPrices": {
+        "Standard": 11554,
+        "Superior": 16776,
+        "Family": 23998
+      }
+    },
+    {
+      "id": "property-03",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-3/800/600",
+      "name": "Kvantum Papucs Apartman",
+      "location": "Budapest",
+      "category": "Apartment",
+      "description": "A papucs egyszerre van az ágy alatt és a büfében, amíg rá nem nézel.",
+      "address": "Bizonytalanság tér 1.",
+      "roomPrices": {
+        "Standard": 12331,
+        "Superior": 17664,
+        "Family": 24997
+      }
+    },
+    {
+      "id": "property-04",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-4/800/600",
+      "name": "Dühös Hörcsög Vendégház",
+      "location": "Pécs",
+      "category": "Guesthouse",
+      "description": "A wellness áramát a tulajdonos hörcsöge termeli. Hétfőn szakszervezeti szünet.",
+      "address": "Mókuskerék sétány 8.",
+      "roomPrices": {
+        "Standard": 13108,
+        "Superior": 18552,
+        "Family": 25996
+      }
+    },
+    {
+      "id": "property-05",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-5/800/600",
+      "name": "Bürokrata Sárkány Hotel",
+      "location": "Debrecen",
+      "category": "Hotel",
+      "description": "A sárkány csak három példányban benyújtott kérvényre fűti fel a szaunát.",
+      "address": "Pecsét sugárút 99.",
+      "roomPrices": {
+        "Standard": 13885,
+        "Superior": 19440,
+        "Family": 26995
+      }
+    },
+    {
+      "id": "property-06",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-6/800/600",
+      "name": "Fordítva Álló Pingvin Panzió",
+      "location": "Miskolc",
+      "category": "Pension",
+      "description": "A minibárban minden hal névjegykártyát visel. A pingvin nem vállal parkolást.",
+      "address": "Jégkocka utca 6.",
+      "roomPrices": {
+        "Standard": 14662,
+        "Superior": 20328,
+        "Family": 27994
+      }
+    },
+    {
+      "id": "property-07",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-7/800/600",
+      "name": "Galaktikus Túrógombóc Apartman",
+      "location": "Győr",
+      "category": "Apartment",
+      "description": "A jacuzziban fahéjas gravitáció működik. A tejfölös meteorraj feláras.",
+      "address": "Tejút körút 12.",
+      "roomPrices": {
+        "Standard": 15439,
+        "Superior": 21216,
+        "Family": 28993
+      }
+    },
+    {
+      "id": "property-08",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-8/800/600",
+      "name": "Suttogó Betonkeverő Vendégház",
+      "location": "Sopron",
+      "category": "Guesthouse",
+      "description": "Esténként a betonkeverő altatódalt kever. Kérésre gluténmentes malter is van.",
+      "address": "Habarcs köz 7.",
+      "roomPrices": {
+        "Standard": 16216,
+        "Superior": 22104,
+        "Family": 29992
+      }
+    },
+    {
+      "id": "property-09",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-9/800/600",
+      "name": "Időutazó Zokni Hotel",
+      "location": "Veszprém",
+      "category": "Hotel",
+      "description": "A kijelentkezés tegnap történt. Az elveszett zoknik jövő kedden érkeznek vissza.",
+      "address": "Tegnap utca 2048.",
+      "roomPrices": {
+        "Standard": 16993,
+        "Superior": 22992,
+        "Family": 30991
+      }
+    },
+    {
+      "id": "property-10",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-10/800/600",
+      "name": "Diszkózó Karalábé Panzió",
+      "location": "Kecskemét",
+      "category": "Pension",
+      "description": "A kertben minden este DJ Karalábé kever. A répák csak vendéglistával jöhetnek.",
+      "address": "Veteményes tér 5.",
+      "roomPrices": {
+        "Standard": 17770,
+        "Superior": 23880,
+        "Family": 31990
+      }
+    },
+    {
+      "id": "property-11",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-11/800/600",
+      "name": "Diplomás Polip Apartman",
+      "location": "Nyíregyháza",
+      "category": "Apartment",
+      "description": "A polip egyszerre nyolc törölközőt hajtogat, de mindegyikről szakdolgozatot ír.",
+      "address": "Csáp utca 8.",
+      "roomPrices": {
+        "Standard": 18547,
+        "Superior": 24768,
+        "Family": 32989
+      }
+    },
+    {
+      "id": "property-12",
+      "imageUrl": "https://picsum.photos/seed/stayadmin-12/800/600",
+      "name": "Láthatatlan Bivaly Vendégház",
+      "location": "Hévíz",
+      "category": "Guesthouse",
+      "description": "A házőrző bivalyt még senki sem látta, de a büfé mindig gyanúsan üres.",
+      "address": "Délibáb sor 0.",
+      "roomPrices": {
+        "Standard": 19324,
+        "Superior": 25656,
+        "Family": 33988
+      }
+    }
+  ],
+  "bookings": [
+    {
+      "id": "booking-001",
+      "guestName": "Gróf Buborék Bendegúz és a képzeletbeli komornyik",
+      "propertyId": "property-01",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Pending",
+      "createdAt": "2026-11-09T08:00:00Z"
+    },
+    {
+      "id": "booking-002",
+      "guestName": "Dr. Zizegő Zsömle (a bőrönd is horkol)",
+      "propertyId": "property-01",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Confirmed",
+      "createdAt": "2026-11-10T08:00:00Z"
+    },
+    {
+      "id": "booking-003",
+      "guestName": "Űrmókus Aladár és három hivatalos felhő",
+      "propertyId": "property-01",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Pending",
+      "createdAt": "2026-11-11T08:00:00Z"
+    },
+    {
+      "id": "booking-004",
+      "guestName": "Báró Lekváros Lajos, okleveles párnaidomár",
+      "propertyId": "property-01",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Confirmed",
+      "createdAt": "2026-11-12T08:00:00Z"
+    },
+    {
+      "id": "booking-005",
+      "guestName": "Kapitány Csoszogó Cékla, a reggeli főellenőre",
+      "propertyId": "property-01",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Confirmed",
+      "createdAt": "2026-11-13T08:00:00Z"
+    },
+    {
+      "id": "booking-006",
+      "guestName": "Dr. Zizegő Zsömle és a képzeletbeli komornyik",
+      "propertyId": "property-02",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Confirmed",
+      "createdAt": "2026-11-09T09:00:00Z"
+    },
+    {
+      "id": "booking-007",
+      "guestName": "Űrmókus Aladár (a bőrönd is horkol)",
+      "propertyId": "property-02",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Cancelled",
+      "createdAt": "2026-11-10T09:00:00Z"
+    },
+    {
+      "id": "booking-008",
+      "guestName": "Báró Lekváros Lajos és három hivatalos felhő",
+      "propertyId": "property-02",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Confirmed",
+      "createdAt": "2026-11-11T09:00:00Z"
+    },
+    {
+      "id": "booking-009",
+      "guestName": "Kapitány Csoszogó Cékla, okleveles párnaidomár",
+      "propertyId": "property-02",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Pending",
+      "createdAt": "2026-11-12T09:00:00Z"
+    },
+    {
+      "id": "booking-010",
+      "guestName": "Prof. Puding Piroska, a reggeli főellenőre",
+      "propertyId": "property-02",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Cancelled",
+      "createdAt": "2026-11-13T09:00:00Z"
+    },
+    {
+      "id": "booking-011",
+      "guestName": "Űrmókus Aladár és a képzeletbeli komornyik",
+      "propertyId": "property-03",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Pending",
+      "createdAt": "2026-11-09T10:00:00Z"
+    },
+    {
+      "id": "booking-012",
+      "guestName": "Báró Lekváros Lajos (a bőrönd is horkol)",
+      "propertyId": "property-03",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Pending",
+      "createdAt": "2026-11-10T10:00:00Z"
+    },
+    {
+      "id": "booking-013",
+      "guestName": "Kapitány Csoszogó Cékla és három hivatalos felhő",
+      "propertyId": "property-03",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Pending",
+      "createdAt": "2026-11-11T10:00:00Z"
+    },
+    {
+      "id": "booking-014",
+      "guestName": "Prof. Puding Piroska, okleveles párnaidomár",
+      "propertyId": "property-03",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Confirmed",
+      "createdAt": "2026-11-12T10:00:00Z"
+    },
+    {
+      "id": "booking-015",
+      "guestName": "Lady Horkoló Hanga, a reggeli főellenőre",
+      "propertyId": "property-03",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Pending",
+      "createdAt": "2026-11-13T10:00:00Z"
+    },
+    {
+      "id": "booking-016",
+      "guestName": "Báró Lekváros Lajos és a képzeletbeli komornyik",
+      "propertyId": "property-04",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Confirmed",
+      "createdAt": "2026-11-09T11:00:00Z"
+    },
+    {
+      "id": "booking-017",
+      "guestName": "Kapitány Csoszogó Cékla (a bőrönd is horkol)",
+      "propertyId": "property-04",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Confirmed",
+      "createdAt": "2026-11-10T11:00:00Z"
+    },
+    {
+      "id": "booking-018",
+      "guestName": "Prof. Puding Piroska és három hivatalos felhő",
+      "propertyId": "property-04",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Confirmed",
+      "createdAt": "2026-11-11T11:00:00Z"
+    },
+    {
+      "id": "booking-019",
+      "guestName": "Lady Horkoló Hanga, okleveles párnaidomár",
+      "propertyId": "property-04",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Pending",
+      "createdAt": "2026-11-12T11:00:00Z"
+    },
+    {
+      "id": "booking-020",
+      "guestName": "Sir Keksz Kázmér, a reggeli főellenőre",
+      "propertyId": "property-04",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Confirmed",
+      "createdAt": "2026-11-13T11:00:00Z"
+    },
+    {
+      "id": "booking-021",
+      "guestName": "Kapitány Csoszogó Cékla és a képzeletbeli komornyik",
+      "propertyId": "property-05",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Pending",
+      "createdAt": "2026-11-09T12:00:00Z"
+    },
+    {
+      "id": "booking-022",
+      "guestName": "Prof. Puding Piroska (a bőrönd is horkol)",
+      "propertyId": "property-05",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Cancelled",
+      "createdAt": "2026-11-10T12:00:00Z"
+    },
+    {
+      "id": "booking-023",
+      "guestName": "Lady Horkoló Hanga és három hivatalos felhő",
+      "propertyId": "property-05",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Pending",
+      "createdAt": "2026-11-11T12:00:00Z"
+    },
+    {
+      "id": "booking-024",
+      "guestName": "Sir Keksz Kázmér, okleveles párnaidomár",
+      "propertyId": "property-05",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Confirmed",
+      "createdAt": "2026-11-12T12:00:00Z"
+    },
+    {
+      "id": "booking-025",
+      "guestName": "Madame Morzsás Margit, a reggeli főellenőre",
+      "propertyId": "property-05",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Cancelled",
+      "createdAt": "2026-11-13T12:00:00Z"
+    },
+    {
+      "id": "booking-026",
+      "guestName": "Prof. Puding Piroska és a képzeletbeli komornyik",
+      "propertyId": "property-06",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Confirmed",
+      "createdAt": "2026-11-09T13:00:00Z"
+    },
+    {
+      "id": "booking-027",
+      "guestName": "Lady Horkoló Hanga (a bőrönd is horkol)",
+      "propertyId": "property-06",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Pending",
+      "createdAt": "2026-11-10T13:00:00Z"
+    },
+    {
+      "id": "booking-028",
+      "guestName": "Sir Keksz Kázmér és három hivatalos felhő",
+      "propertyId": "property-06",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Confirmed",
+      "createdAt": "2026-11-11T13:00:00Z"
+    },
+    {
+      "id": "booking-029",
+      "guestName": "Madame Morzsás Margit, okleveles párnaidomár",
+      "propertyId": "property-06",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Pending",
+      "createdAt": "2026-11-12T13:00:00Z"
+    },
+    {
+      "id": "booking-030",
+      "guestName": "Tábornok Töpörtyű Tihamér, a reggeli főellenőre",
+      "propertyId": "property-06",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Pending",
+      "createdAt": "2026-11-13T13:00:00Z"
+    },
+    {
+      "id": "booking-031",
+      "guestName": "Lady Horkoló Hanga és a képzeletbeli komornyik",
+      "propertyId": "property-07",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Pending",
+      "createdAt": "2026-11-09T14:00:00Z"
+    },
+    {
+      "id": "booking-032",
+      "guestName": "Sir Keksz Kázmér (a bőrönd is horkol)",
+      "propertyId": "property-07",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Confirmed",
+      "createdAt": "2026-11-10T14:00:00Z"
+    },
+    {
+      "id": "booking-033",
+      "guestName": "Madame Morzsás Margit és három hivatalos felhő",
+      "propertyId": "property-07",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Pending",
+      "createdAt": "2026-11-11T14:00:00Z"
+    },
+    {
+      "id": "booking-034",
+      "guestName": "Tábornok Töpörtyű Tihamér, okleveles párnaidomár",
+      "propertyId": "property-07",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Confirmed",
+      "createdAt": "2026-11-12T14:00:00Z"
+    },
+    {
+      "id": "booking-035",
+      "guestName": "Nokedli Napóleon, a reggeli főellenőre",
+      "propertyId": "property-07",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Confirmed",
+      "createdAt": "2026-11-13T14:00:00Z"
+    },
+    {
+      "id": "booking-036",
+      "guestName": "Sir Keksz Kázmér és a képzeletbeli komornyik",
+      "propertyId": "property-08",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Confirmed",
+      "createdAt": "2026-11-09T15:00:00Z"
+    },
+    {
+      "id": "booking-037",
+      "guestName": "Madame Morzsás Margit (a bőrönd is horkol)",
+      "propertyId": "property-08",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Cancelled",
+      "createdAt": "2026-11-10T15:00:00Z"
+    },
+    {
+      "id": "booking-038",
+      "guestName": "Tábornok Töpörtyű Tihamér és három hivatalos felhő",
+      "propertyId": "property-08",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Confirmed",
+      "createdAt": "2026-11-11T15:00:00Z"
+    },
+    {
+      "id": "booking-039",
+      "guestName": "Nokedli Napóleon, okleveles párnaidomár",
+      "propertyId": "property-08",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Pending",
+      "createdAt": "2026-11-12T15:00:00Z"
+    },
+    {
+      "id": "booking-040",
+      "guestName": "Csillámpóni Csongor, a reggeli főellenőre",
+      "propertyId": "property-08",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Cancelled",
+      "createdAt": "2026-11-13T15:00:00Z"
+    },
+    {
+      "id": "booking-041",
+      "guestName": "Madame Morzsás Margit és a képzeletbeli komornyik",
+      "propertyId": "property-09",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Pending",
+      "createdAt": "2026-11-09T16:00:00Z"
+    },
+    {
+      "id": "booking-042",
+      "guestName": "Tábornok Töpörtyű Tihamér (a bőrönd is horkol)",
+      "propertyId": "property-09",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Pending",
+      "createdAt": "2026-11-10T16:00:00Z"
+    },
+    {
+      "id": "booking-043",
+      "guestName": "Nokedli Napóleon és három hivatalos felhő",
+      "propertyId": "property-09",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Pending",
+      "createdAt": "2026-11-11T16:00:00Z"
+    },
+    {
+      "id": "booking-044",
+      "guestName": "Csillámpóni Csongor, okleveles párnaidomár",
+      "propertyId": "property-09",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Confirmed",
+      "createdAt": "2026-11-12T16:00:00Z"
+    },
+    {
+      "id": "booking-045",
+      "guestName": "Gróf Buborék Bendegúz, a reggeli főellenőre",
+      "propertyId": "property-09",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Pending",
+      "createdAt": "2026-11-13T16:00:00Z"
+    },
+    {
+      "id": "booking-046",
+      "guestName": "Tábornok Töpörtyű Tihamér és a képzeletbeli komornyik",
+      "propertyId": "property-10",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Confirmed",
+      "createdAt": "2026-11-09T17:00:00Z"
+    },
+    {
+      "id": "booking-047",
+      "guestName": "Nokedli Napóleon (a bőrönd is horkol)",
+      "propertyId": "property-10",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Confirmed",
+      "createdAt": "2026-11-10T17:00:00Z"
+    },
+    {
+      "id": "booking-048",
+      "guestName": "Csillámpóni Csongor és három hivatalos felhő",
+      "propertyId": "property-10",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Confirmed",
+      "createdAt": "2026-11-11T17:00:00Z"
+    },
+    {
+      "id": "booking-049",
+      "guestName": "Gróf Buborék Bendegúz, okleveles párnaidomár",
+      "propertyId": "property-10",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Pending",
+      "createdAt": "2026-11-12T17:00:00Z"
+    },
+    {
+      "id": "booking-050",
+      "guestName": "Dr. Zizegő Zsömle, a reggeli főellenőre",
+      "propertyId": "property-10",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Confirmed",
+      "createdAt": "2026-11-13T17:00:00Z"
+    },
+    {
+      "id": "booking-051",
+      "guestName": "Nokedli Napóleon és a képzeletbeli komornyik",
+      "propertyId": "property-11",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Pending",
+      "createdAt": "2026-11-09T18:00:00Z"
+    },
+    {
+      "id": "booking-052",
+      "guestName": "Csillámpóni Csongor (a bőrönd is horkol)",
+      "propertyId": "property-11",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Cancelled",
+      "createdAt": "2026-11-10T18:00:00Z"
+    },
+    {
+      "id": "booking-053",
+      "guestName": "Gróf Buborék Bendegúz és három hivatalos felhő",
+      "propertyId": "property-11",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Pending",
+      "createdAt": "2026-11-11T18:00:00Z"
+    },
+    {
+      "id": "booking-054",
+      "guestName": "Dr. Zizegő Zsömle, okleveles párnaidomár",
+      "propertyId": "property-11",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Confirmed",
+      "createdAt": "2026-11-12T18:00:00Z"
+    },
+    {
+      "id": "booking-055",
+      "guestName": "Űrmókus Aladár, a reggeli főellenőre",
+      "propertyId": "property-11",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Cancelled",
+      "createdAt": "2026-11-13T18:00:00Z"
+    },
+    {
+      "id": "booking-056",
+      "guestName": "Csillámpóni Csongor és a képzeletbeli komornyik",
+      "propertyId": "property-12",
+      "start": "2026-11-09",
+      "end": "2026-11-13",
+      "status": "Confirmed",
+      "createdAt": "2026-11-09T19:00:00Z"
+    },
+    {
+      "id": "booking-057",
+      "guestName": "Gróf Buborék Bendegúz (a bőrönd is horkol)",
+      "propertyId": "property-12",
+      "start": "2026-11-11",
+      "end": "2026-11-14",
+      "status": "Pending",
+      "createdAt": "2026-11-10T19:00:00Z"
+    },
+    {
+      "id": "booking-058",
+      "guestName": "Dr. Zizegő Zsömle és három hivatalos felhő",
+      "propertyId": "property-12",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "status": "Confirmed",
+      "createdAt": "2026-11-11T19:00:00Z"
+    },
+    {
+      "id": "booking-059",
+      "guestName": "Űrmókus Aladár, okleveles párnaidomár",
+      "propertyId": "property-12",
+      "start": "2026-11-14",
+      "end": "2026-11-17",
+      "status": "Pending",
+      "createdAt": "2026-11-12T19:00:00Z"
+    },
+    {
+      "id": "booking-060",
+      "guestName": "Báró Lekváros Lajos, a reggeli főellenőre",
+      "propertyId": "property-12",
+      "start": "2026-11-15",
+      "end": "2026-11-16",
+      "status": "Pending",
+      "createdAt": "2026-11-13T19:00:00Z"
+    }
+  ]
+}
