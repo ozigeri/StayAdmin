@@ -1,0 +1,42 @@
+<header class="h-16 px-4 sm:px-6 bg-white/90 backdrop-blur-md border-b border-slate-200/80 flex items-center justify-between sticky top-0 z-30 transition-all">
+  <div class="flex items-center gap-3">
+    <button
+      type="button"
+      (click)="handleToggleSidebar()"
+      class="lg:hidden p-2 rounded-xl text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+      aria-label="Menü megnyitása"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-500 flex items-center justify-center text-white shadow-xs">
+        <app-icon name="building" size="sm"></app-icon>
+      </div>
+      <div>
+        <h1 class="text-base font-bold text-slate-900 tracking-tight leading-none">StayAdmin</h1>
+        <span class="text-[10px] font-medium text-slate-400 uppercase tracking-wider block mt-0.5">Adminisztráció</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-3 sm:gap-4">
+    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/80 border border-slate-200/60">
+      <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-xs font-semibold">
+        <app-icon name="user" size="xs"></app-icon>
+      </div>
+      <span class="text-xs font-semibold text-slate-700">{{ username() }}</span>
+    </div>
+
+    <app-button
+      variant="outline"
+      size="sm"
+      (clicked)="handleLogout()"
+    >
+      <app-icon name="logout" size="sm"></app-icon>
+      <span class="hidden sm:inline">Kijelentkezés</span>
+    </app-button>
+  </div>
+</header>
