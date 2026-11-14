@@ -1,12 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 import { InputComponent } from '../../components/input/input.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { IconComponent } from '../../components/icon/icon.component';
-import { LoginResponse } from '../../core/models';
+import * as AuthActions from '../../state/auth/auth.actions';
+import { selectAuthLoading, selectAuthError } from '../../state/auth/auth.selectors';
+import { LoginRequest } from '../../core/models';
 
 @Component({
   selector: 'app-login-view',
@@ -18,16 +19,15 @@ import { LoginResponse } from '../../core/models';
 })
 export class LoginViewComponent {
   private readonly fb = inject(FormBuilder);
-  private readonly http = inject(HttpClient);
-  private readonly router = inject(Router);
+  private readonly store = inject(Store);
 
   protected readonly loginForm = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
 
-  protected readonly loading = signal<boolean>(false);
-  protected readonly errorMessage = signal<string | null>(null);
+  protected readonly loading = this.store.selectSignal(selectAuthLoading);
+  protected readonly errorMessage = this.store.selectSignal(selectAuthError);
 
   handleSubmit(): void {
     if (this.loginForm.invalid) {
@@ -35,23 +35,7 @@ export class LoginViewComponent {
       return;
     }
 
-    this.loading.set(true);
-    this.errorMessage.set(null);
-
-    const credentials = this.loginForm.getRawValue();
-
-    this.http.post<LoginResponse>('http://localhost:3000/auth/login', credentials).subscribe({
-      next: (res) => {
-        this.loading.set(false);
-        localStorage.setItem('stayadmin_token', res.token);
-        localStorage.setItem('stayadmin_user', JSON.stringify({ username: credentials.username }));
-        this.router.navigate(['/overview']);
-      },
-      error: (err) => {
-        this.loading.set(false);
-        const msg = err.error?.message || 'Helytelen felhasználónév vagy jelszó. Kérjük próbálja újra!';
-        this.errorMessage.set(msg);
-      },
-    });
+    const credentials = this.loginForm.getRawValue() as LoginRequest;
+    this.store.dispatch(AuthActions.login({ credentials }));
   }
 }
