@@ -1,14 +1,27 @@
-import { ChangeDetectionStrategy, Component, inject, signal, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { CardComponent } from '../../components/card/card.component';
 import { InputComponent } from '../../components/input/input.component';
 import { TextareaComponent } from '../../components/textarea/textarea.component';
 import { SelectComponent, SelectOption } from '../../components/select/select.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { IconComponent } from '../../components/icon/icon.component';
-import { EPropertyCategory } from '../../core/models';
+import { EPropertyCategory, PropertyDto } from '../../core/models';
+import * as PropertiesActions from '../../state/properties/properties.actions';
+import {
+  selectPropertiesSaving,
+  selectSelectedProperty,
+} from '../../state/properties/properties.selectors';
 
 @Component({
   selector: 'app-property-form-view',
@@ -31,12 +44,16 @@ export class PropertyFormViewComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly store = inject(Store);
 
   protected readonly isEditMode = signal<boolean>(false);
   protected readonly propertyId = signal<string | null>(null);
-  protected readonly loading = signal<boolean>(false);
-  protected readonly saving = signal<boolean>(false);
   protected readonly imagePreviewUrl = signal<string>('');
+
+  protected readonly saving = this.store.selectSignal(selectPropertiesSaving);
+  private readonly selectedProperty = this.store.selectSignal(
+    selectSelectedProperty
+  );
 
   protected readonly propertyForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
@@ -59,11 +76,34 @@ export class PropertyFormViewComponent implements OnInit {
     { label: 'Vendégház', value: EPropertyCategory.Guesthouse },
   ];
 
+  constructor() {
+    effect(() => {
+      const prop = this.selectedProperty();
+      if (this.isEditMode() && prop && prop.id === this.propertyId()) {
+        this.propertyForm.patchValue({
+          name: prop.name,
+          location: prop.location,
+          address: prop.address,
+          category: prop.category,
+          description: prop.description,
+          imageUrl: prop.imageUrl,
+          roomPrices: {
+            Standard: prop.roomPrices.Standard,
+            Superior: prop.roomPrices.Superior,
+            Family: prop.roomPrices.Family,
+          },
+        });
+        this.imagePreviewUrl.set(prop.imageUrl || '');
+      }
+    });
+  }
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode.set(true);
       this.propertyId.set(id);
+      this.store.dispatch(PropertiesActions.loadPropertyById({ id }));
     }
 
     this.propertyForm.get('imageUrl')?.valueChanges.subscribe((url) => {
@@ -101,6 +141,32 @@ export class PropertyFormViewComponent implements OnInit {
     if (this.propertyForm.invalid) {
       this.propertyForm.markAllAsTouched();
       return;
+    }
+
+    const raw = this.propertyForm.getRawValue();
+    const dto: PropertyDto = {
+      name: raw.name,
+      location: raw.location,
+      address: raw.address,
+      category: raw.category,
+      description: raw.description ?? '',
+      imageUrl: raw.imageUrl ?? '',
+      roomPrices: {
+        Standard: Number(raw.roomPrices.Standard),
+        Superior: Number(raw.roomPrices.Superior),
+        Family: Number(raw.roomPrices.Family),
+      },
+    };
+
+    if (this.isEditMode() && this.propertyId()) {
+      this.store.dispatch(
+        PropertiesActions.updateProperty({
+          id: this.propertyId()!,
+          dto,
+        })
+      );
+    } else {
+      this.store.dispatch(PropertiesActions.createProperty({ dto }));
     }
   }
 }
