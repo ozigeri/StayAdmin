@@ -1,9 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { ToastComponent, ToastItem } from '../toast/toast.component';
+import { ToastComponent } from '../toast/toast.component';
+import { NotificationService } from '../../core/services/notification.service';
+import * as AuthActions from '../../state/auth/auth.actions';
+import { selectAuthUser } from '../../state/auth/auth.selectors';
 
 @Component({
   selector: 'app-layout',
@@ -14,11 +18,14 @@ import { ToastComponent, ToastItem } from '../toast/toast.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
-  private readonly router = inject(Router);
+  private readonly store = inject(Store);
+  private readonly notificationService = inject(NotificationService);
+
+  private readonly authUser = this.store.selectSignal(selectAuthUser);
 
   protected readonly sidebarOpen = signal<boolean>(false);
-  protected readonly username = signal<string>('Admin');
-  protected readonly toasts = signal<ToastItem[]>([]);
+  protected readonly username = computed(() => this.authUser()?.username || 'Admin');
+  protected readonly toasts = this.notificationService.toasts;
 
   toggleSidebar(): void {
     this.sidebarOpen.update((v) => !v);
@@ -29,12 +36,10 @@ export class LayoutComponent {
   }
 
   handleLogout(): void {
-    localStorage.removeItem('stayadmin_token');
-    localStorage.removeItem('stayadmin_user');
-    this.router.navigate(['/login']);
+    this.store.dispatch(AuthActions.logout());
   }
 
   removeToast(id: string): void {
-    this.toasts.update((items) => items.filter((t) => t.id !== id));
+    this.notificationService.remove(id);
   }
 }
