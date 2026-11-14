@@ -37,15 +37,15 @@ export class ButtonComponent {
       primary:
         'bg-indigo-600 text-white shadow-sm hover:bg-indigo-700 hover:shadow focus:ring-indigo-500 border border-transparent',
       secondary:
-        'bg-slate-900 text-white shadow-sm hover:bg-slate-800 focus:ring-slate-900 border border-transparent',
+        'bg-slate-900 dark:bg-slate-700 text-white shadow-sm hover:bg-slate-800 dark:hover:bg-slate-600 focus:ring-slate-900 border border-transparent',
       outline:
-        'bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 hover:border-slate-400 focus:ring-slate-400 shadow-xs',
+        'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:border-slate-400 dark:hover:border-slate-600 focus:ring-slate-400 dark:focus:ring-slate-600 shadow-xs',
       ghost:
-        'bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:ring-slate-300',
+        'bg-transparent text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white focus:ring-slate-300 dark:focus:ring-slate-700',
       danger:
         'bg-rose-600 text-white shadow-sm hover:bg-rose-700 hover:shadow focus:ring-rose-500 border border-transparent',
       subtle:
-        'bg-indigo-50 text-indigo-700 hover:bg-indigo-100 focus:ring-indigo-300 border border-indigo-100',
+        'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 focus:ring-indigo-300 border border-indigo-100 dark:border-indigo-800/60',
     };
 
     const widthClass = this.fullWidth() ? 'w-full' : '';

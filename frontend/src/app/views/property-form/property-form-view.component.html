@@ -1,15 +1,15 @@
 <div class="space-y-6 animate-fade-in max-w-5xl mx-auto">
-  <div class="flex items-center gap-4 pb-2 border-b border-slate-200/60">
+  <div class="flex items-center gap-4 pb-2 border-b border-slate-200/60 dark:border-slate-800">
     <app-button variant="ghost" size="sm" (clicked)="cancel()">
       <app-icon name="arrow-left" size="sm"></app-icon>
       <span>Vissza</span>
     </app-button>
 
     <div>
-      <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
         {{ isEditMode() ? 'Szálláshely szerkesztése' : 'Új szálláshely létrehozása' }}
       </h2>
-      <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+      <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
         {{ isEditMode() ? 'Módosítsa a meglévő szálláshely adatait és szobaárait' : 'Adja meg az új szálláshely kötelező adatait és árait' }}
       </p>
     </div>
@@ -73,10 +73,10 @@
 
         <app-card title="Szobák és éjszakánkénti árak (Ft / éj)" subtitle="Mind a három szobatípushoz kötelező megadni a nemnegatív árat">
           <div formGroupName="roomPrices" class="space-y-4">
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h4 class="text-sm font-semibold text-slate-800">Standard szoba</h4>
-                <p class="text-xs text-slate-500">2 férőhelyes alap szoba</p>
+                <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-100">Standard szoba</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">2 férőhelyes alap szoba</p>
               </div>
               <div class="w-full sm:w-48">
                 <app-input
@@ -89,10 +89,10 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h4 class="text-sm font-semibold text-slate-800">Superior szoba</h4>
-                <p class="text-xs text-slate-500">3 férőhelyes kényelmes szoba</p>
+                <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-100">Superior szoba</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">3 férőhelyes kényelmes szoba</p>
               </div>
               <div class="w-full sm:w-48">
                 <app-input
@@ -105,10 +105,10 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h4 class="text-sm font-semibold text-slate-800">Családi szoba</h4>
-                <p class="text-xs text-slate-500">4 férőhelyes tágas szoba családoknak</p>
+                <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-100">Családi szoba</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">4 férőhelyes tágas szoba családoknak</p>
               </div>
               <div class="w-full sm:w-48">
                 <app-input
@@ -126,7 +126,7 @@
 
       <div class="lg:col-span-1 space-y-6">
         <app-card title="Kép előnézet" subtitle="Az űrlapon megadott URL alapján renderelve" padding="sm">
-          <div class="aspect-4/3 w-full rounded-xl bg-slate-100 overflow-hidden border border-slate-200 flex items-center justify-center relative">
+          <div class="aspect-4/3 w-full rounded-xl bg-slate-100 dark:bg-slate-800 overflow-hidden border border-slate-200 dark:border-slate-700 flex items-center justify-center relative">
             @if (imagePreviewUrl()) {
               <img
                 [src]="imagePreviewUrl()"
@@ -136,9 +136,9 @@
               />
             } @else {
               <div class="flex flex-col items-center justify-center p-6 text-center text-slate-400">
-                <app-icon name="image" size="xl" customClass="mb-2 text-slate-300"></app-icon>
-                <span class="text-xs font-medium">Nincs megadva kép URL</span>
-                <span class="text-[11px] text-slate-400 mt-0.5">Adjon meg egy URL-t az előnézethez</span>
+                <app-icon name="image" size="xl" customClass="mb-2 text-slate-300 dark:text-slate-600"></app-icon>
+                <span class="text-xs font-medium dark:text-slate-300">Nincs megadva kép URL</span>
+                <span class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">Adjon meg egy URL-t az előnézethez</span>
               </div>
             }
           </div>
