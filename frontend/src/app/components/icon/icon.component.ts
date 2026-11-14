@@ -19,7 +19,9 @@ export type IconName =
   | 'arrow-left'
   | 'refresh'
   | 'map-pin'
-  | 'bed';
+  | 'bed'
+  | 'sun'
+  | 'moon';
 
 export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

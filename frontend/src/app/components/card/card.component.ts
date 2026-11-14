@@ -19,8 +19,8 @@ export class CardComponent {
   readonly customClass = input<string>('');
 
   protected readonly cardClasses = computed(() => {
-    const base = 'bg-white border border-slate-200/80 rounded-2xl shadow-xs transition-all duration-200';
-    const hover = this.hoverable() ? 'hover:shadow-md hover:border-slate-300 hover:-translate-y-0.5' : '';
+    const base = 'bg-white dark:bg-slate-900 border border-white dark:border-slate-900 rounded-2xl shadow-xs text-slate-900 dark:text-slate-100 transition-all duration-200';
+    const hover = this.hoverable() ? 'hover:shadow-md hover:-translate-y-0.5' : '';
     return `${base} ${hover} ${this.customClass()}`.trim();
   });
 

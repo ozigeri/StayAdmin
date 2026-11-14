@@ -1,7 +1,7 @@
 <div class="space-y-6 animate-fade-in">
-  <div class="pb-2 border-b border-slate-200/60">
-    <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Foglalások</h2>
-    <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Tekintse át a beérkezett foglalásokat, igazolja vissza vagy mondja le azokat</p>
+  <div class="pb-2 border-b border-slate-200/60 dark:border-slate-800">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Foglalások</h2>
+    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">Tekintse át a beérkezett foglalásokat, igazolja vissza vagy mondja le azokat</p>
   </div>
 
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -50,15 +50,18 @@
     </app-stat-card>
   </div>
 
-  <div class="flex items-center gap-1.5 p-1 bg-slate-200/60 rounded-xl w-fit max-w-full overflow-x-auto">
+  <div class="flex items-center gap-1.5 p-1 bg-slate-200/60 dark:bg-slate-800 rounded-xl w-fit max-w-full overflow-x-auto">
     <button
       type="button"
       (click)="setFilter('All')"
-      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all"
+      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer"
       [class.bg-white]="selectedFilter() === 'All'"
+      [class.dark:bg-slate-700]="selectedFilter() === 'All'"
       [class.text-slate-900]="selectedFilter() === 'All'"
+      [class.dark:text-white]="selectedFilter() === 'All'"
       [class.shadow-2xs]="selectedFilter() === 'All'"
       [class.text-slate-600]="selectedFilter() !== 'All'"
+      [class.dark:text-slate-400]="selectedFilter() !== 'All'"
       [class.hover:text-slate-900]="selectedFilter() !== 'All'"
     >
       Összes
@@ -66,11 +69,14 @@
     <button
       type="button"
       (click)="setFilter('Pending')"
-      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all"
+      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer"
       [class.bg-white]="selectedFilter() === 'Pending'"
+      [class.dark:bg-slate-700]="selectedFilter() === 'Pending'"
       [class.text-slate-900]="selectedFilter() === 'Pending'"
+      [class.dark:text-white]="selectedFilter() === 'Pending'"
       [class.shadow-2xs]="selectedFilter() === 'Pending'"
       [class.text-slate-600]="selectedFilter() !== 'Pending'"
+      [class.dark:text-slate-400]="selectedFilter() !== 'Pending'"
       [class.hover:text-slate-900]="selectedFilter() !== 'Pending'"
     >
       Függőben ({{ summary().pending }})
@@ -78,11 +84,14 @@
     <button
       type="button"
       (click)="setFilter('Confirmed')"
-      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all"
+      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer"
       [class.bg-white]="selectedFilter() === 'Confirmed'"
+      [class.dark:bg-slate-700]="selectedFilter() === 'Confirmed'"
       [class.text-slate-900]="selectedFilter() === 'Confirmed'"
+      [class.dark:text-white]="selectedFilter() === 'Confirmed'"
       [class.shadow-2xs]="selectedFilter() === 'Confirmed'"
       [class.text-slate-600]="selectedFilter() !== 'Confirmed'"
+      [class.dark:text-slate-400]="selectedFilter() !== 'Confirmed'"
       [class.hover:text-slate-900]="selectedFilter() !== 'Confirmed'"
     >
       Visszaigazolt ({{ summary().confirmed }})
@@ -90,11 +99,14 @@
     <button
       type="button"
       (click)="setFilter('Cancelled')"
-      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all"
+      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer"
       [class.bg-white]="selectedFilter() === 'Cancelled'"
+      [class.dark:bg-slate-700]="selectedFilter() === 'Cancelled'"
       [class.text-slate-900]="selectedFilter() === 'Cancelled'"
+      [class.dark:text-white]="selectedFilter() === 'Cancelled'"
       [class.shadow-2xs]="selectedFilter() === 'Cancelled'"
       [class.text-slate-600]="selectedFilter() !== 'Cancelled'"
+      [class.dark:text-slate-400]="selectedFilter() !== 'Cancelled'"
       [class.hover:text-slate-900]="selectedFilter() !== 'Cancelled'"
     >
       Lemondva ({{ summary().cancelled }})
@@ -113,23 +125,23 @@
     } @else {
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
-          <thead class="bg-slate-50 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100">
+          <thead class="bg-slate-50 dark:bg-slate-800/80 text-[11px] font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800">
             <tr>
-              <th class="px-5 py-3">Vendég</th>
-              <th class="px-5 py-3">Szálláshely</th>
-              <th class="px-5 py-3">Érkezés</th>
-              <th class="px-5 py-3">Távozás</th>
-              <th class="px-5 py-3">Státusz</th>
-              <th class="px-5 py-3 text-right">Műveletek</th>
+              <th class="px-5 py-3 text-center">Vendég</th>
+              <th class="px-5 py-3 text-center">Szálláshely</th>
+              <th class="px-5 py-3 text-center">Érkezés</th>
+              <th class="px-5 py-3 text-center">Távozás</th>
+              <th class="px-5 py-3 text-center">Státusz</th>
+              <th class="px-5 py-3 text-center">Műveletek</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-slate-100 font-medium">
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
             @for (booking of filteredBookings(); track booking.id) {
-              <tr class="hover:bg-slate-50/80 transition-colors">
-                <td class="px-5 py-3.5 text-slate-900 font-semibold">{{ booking.guestName }}</td>
-                <td class="px-5 py-3.5 text-slate-600">{{ booking.propertyName }}</td>
-                <td class="px-5 py-3.5 text-slate-600 whitespace-nowrap">{{ booking.start }}</td>
-                <td class="px-5 py-3.5 text-slate-600 whitespace-nowrap">{{ booking.end }}</td>
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/50 transition-colors">
+                <td class="px-5 py-3.5 text-slate-900 dark:text-slate-100 font-semibold">{{ booking.guestName }}</td>
+                <td class="px-5 py-3.5 text-slate-600 dark:text-slate-300">{{ booking.propertyName }}</td>
+                <td class="px-5 py-3.5 text-slate-600 dark:text-slate-300 whitespace-nowrap">{{ booking.start }}</td>
+                <td class="px-5 py-3.5 text-slate-600 dark:text-slate-300 whitespace-nowrap">{{ booking.end }}</td>
                 <td class="px-5 py-3.5">
                   <app-badge
                     [variant]="getBadgeVariant(booking.status)"
