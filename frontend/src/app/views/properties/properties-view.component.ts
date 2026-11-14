@@ -1,7 +1,14 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ButtonComponent } from '../../components/button/button.component';
 import { InputComponent } from '../../components/input/input.component';
 import { SelectComponent, SelectOption } from '../../components/select/select.component';
@@ -11,6 +18,11 @@ import { ModalComponent } from '../../components/modal/modal.component';
 import { EmptyStateComponent } from '../../components/empty-state/empty-state.component';
 import { IconComponent } from '../../components/icon/icon.component';
 import { PropertyListItem, EPropertyCategory } from '../../core/models';
+import * as PropertiesActions from '../../state/properties/properties.actions';
+import {
+  selectPropertiesList,
+  selectPropertiesLoading,
+} from '../../state/properties/properties.selectors';
 
 @Component({
   selector: 'app-properties-view',
@@ -31,9 +43,13 @@ import { PropertyListItem, EPropertyCategory } from '../../core/models';
   styleUrl: './properties-view.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PropertiesViewComponent {
-  protected readonly properties = signal<PropertyListItem[]>([]);
-  protected readonly loading = signal<boolean>(false);
+export class PropertiesViewComponent implements OnInit {
+  private readonly store = inject(Store);
+  private readonly router = inject(Router);
+
+  protected readonly properties = this.store.selectSignal(selectPropertiesList);
+  protected readonly loading = this.store.selectSignal(selectPropertiesLoading);
+
   protected readonly searchQuery = signal<string>('');
   protected readonly selectedCategory = signal<string>('');
 
@@ -49,7 +65,9 @@ export class PropertiesViewComponent {
     { label: 'Vendégház', value: EPropertyCategory.Guesthouse },
   ];
 
-  constructor(private readonly router: Router) {}
+  ngOnInit(): void {
+    this.store.dispatch(PropertiesActions.loadProperties({}));
+  }
 
   getCategoryBadgeVariant(cat: EPropertyCategory): BadgeVariant {
     switch (cat) {
@@ -82,11 +100,24 @@ export class PropertiesViewComponent {
   }
 
   handleSearch(query: string | number): void {
-    this.searchQuery.set(String(query));
+    const q = String(query);
+    this.searchQuery.set(q);
+    this.triggerFilter();
   }
 
   handleCategoryChange(category: string | number): void {
-    this.selectedCategory.set(String(category));
+    const c = String(category);
+    this.selectedCategory.set(c);
+    this.triggerFilter();
+  }
+
+  private triggerFilter(): void {
+    this.store.dispatch(
+      PropertiesActions.loadProperties({
+        name: this.searchQuery(),
+        category: this.selectedCategory(),
+      })
+    );
   }
 
   navigateToCreate(): void {
@@ -108,6 +139,11 @@ export class PropertiesViewComponent {
   }
 
   confirmDelete(): void {
+    const target = this.propertyToDelete();
+    if (target) {
+      this.store.dispatch(PropertiesActions.deleteProperty({ id: target.id }));
+    }
     this.isDeleteModalOpen.set(false);
+    this.propertyToDelete.set(null);
   }
 }
